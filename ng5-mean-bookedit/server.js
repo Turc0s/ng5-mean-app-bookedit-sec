@@ -2,6 +2,13 @@ var express = require("express");
 var path = require("path");
 var bodyParser = require("body-parser");
 
+// mongoose
+var mongoose = require("mongoose");
+mongoose.Promise = require("bluebird");
+mongoose.connect("mongodb://localhost:23100/mean-angular5", { promiseLibrary: require("bluebird")})
+        .then(() => console.log("Connection successfull"))
+        .catch((err) => console.log(err));
+
 var book = require("./routes/book");
 var app = express();
 
